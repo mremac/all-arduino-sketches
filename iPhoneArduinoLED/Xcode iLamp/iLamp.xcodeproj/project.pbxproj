@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		92AE9A741590ED7F00DED0C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92AE9A731590ED7F00DED0C9 /* UIKit.framework */; };
+		92AE9A761590ED7F00DED0C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92AE9A751590ED7F00DED0C9 /* Foundation.framework */; };
+		92AE9A781590ED7F00DED0C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92AE9A771590ED7F00DED0C9 /* CoreGraphics.framework */; };
+		92AE9A7E1590ED7F00DED0C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AE9A7C1590ED7F00DED0C9 /* InfoPlist.strings */; };
+		92AE9A801590ED7F00DED0C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE9A7F1590ED7F00DED0C9 /* main.m */; };
+		92AE9A841590ED8000DED0C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE9A831590ED8000DED0C9 /* AppDelegate.m */; };
+		92AE9A871590ED8000DED0C9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92AE9A851590ED8000DED0C9 /* MainStoryboard.storyboard */; };
+		92AE9A8A1590ED8000DED0C9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE9A891590ED8000DED0C9 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		92AE9A6F1590ED7F00DED0C9 /* iLamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92AE9A731590ED7F00DED0C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		92AE9A751590ED7F00DED0C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		92AE9A771590ED7F00DED0C9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		92AE9A7B1590ED7F00DED0C9 /* iLamp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iLamp-Info.plist"; sourceTree = "<group>"; };
+		92AE9A7D1590ED7F00DED0C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		92AE9A7F1590ED7F00DED0C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		92AE9A811590ED7F00DED0C9 /* iLamp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iLamp-Prefix.pch"; sourceTree = "<group>"; };
+		92AE9A821590ED8000DED0C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		92AE9A831590ED8000DED0C9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		92AE9A861590ED8000DED0C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		92AE9A881590ED8000DED0C9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		92AE9A891590ED8000DED0C9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		92AE9A6C1590ED7F00DED0C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92AE9A741590ED7F00DED0C9 /* UIKit.framework in Frameworks */,
+				92AE9A761590ED7F00DED0C9 /* Foundation.framework in Frameworks */,
+				92AE9A781590ED7F00DED0C9 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		92AE9A641590ED7F00DED0C9 = {
+			isa = PBXGroup;
+			children = (
+				92AE9A791590ED7F00DED0C9 /* iLamp */,
+				92AE9A721590ED7F00DED0C9 /* Frameworks */,
+				92AE9A701590ED7F00DED0C9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		92AE9A701590ED7F00DED0C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92AE9A6F1590ED7F00DED0C9 /* iLamp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		92AE9A721590ED7F00DED0C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92AE9A731590ED7F00DED0C9 /* UIKit.framework */,
+				92AE9A751590ED7F00DED0C9 /* Foundation.framework */,
+				92AE9A771590ED7F00DED0C9 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		92AE9A791590ED7F00DED0C9 /* iLamp */ = {
+			isa = PBXGroup;
+			children = (
+				92AE9A821590ED8000DED0C9 /* AppDelegate.h */,
+				92AE9A831590ED8000DED0C9 /* AppDelegate.m */,
+				92AE9A851590ED8000DED0C9 /* MainStoryboard.storyboard */,
+				92AE9A881590ED8000DED0C9 /* ViewController.h */,
+				92AE9A891590ED8000DED0C9 /* ViewController.m */,
+				92AE9A7A1590ED7F00DED0C9 /* Supporting Files */,
+			);
+			path = iLamp;
+			sourceTree = "<group>";
+		};
+		92AE9A7A1590ED7F00DED0C9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				92AE9A7B1590ED7F00DED0C9 /* iLamp-Info.plist */,
+				92AE9A7C1590ED7F00DED0C9 /* InfoPlist.strings */,
+				92AE9A7F1590ED7F00DED0C9 /* main.m */,
+				92AE9A811590ED7F00DED0C9 /* iLamp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		92AE9A6E1590ED7F00DED0C9 /* iLamp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92AE9A8D1590ED8000DED0C9 /* Build configuration list for PBXNativeTarget "iLamp" */;
+			buildPhases = (
+				92AE9A6B1590ED7F00DED0C9 /* Sources */,
+				92AE9A6C1590ED7F00DED0C9 /* Frameworks */,
+				92AE9A6D1590ED7F00DED0C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iLamp;
+			productName = iLamp;
+			productReference = 92AE9A6F1590ED7F00DED0C9 /* iLamp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92AE9A661590ED7F00DED0C9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 92AE9A691590ED7F00DED0C9 /* Build configuration list for PBXProject "iLamp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 92AE9A641590ED7F00DED0C9;
+			productRefGroup = 92AE9A701590ED7F00DED0C9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92AE9A6E1590ED7F00DED0C9 /* iLamp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		92AE9A6D1590ED7F00DED0C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92AE9A7E1590ED7F00DED0C9 /* InfoPlist.strings in Resources */,
+				92AE9A871590ED8000DED0C9 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92AE9A6B1590ED7F00DED0C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92AE9A801590ED7F00DED0C9 /* main.m in Sources */,
+				92AE9A841590ED8000DED0C9 /* AppDelegate.m in Sources */,
+				92AE9A8A1590ED8000DED0C9 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		92AE9A7C1590ED7F00DED0C9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92AE9A7D1590ED7F00DED0C9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		92AE9A851590ED8000DED0C9 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				92AE9A861590ED8000DED0C9 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		92AE9A8B1590ED8000DED0C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		92AE9A8C1590ED8000DED0C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		92AE9A8E1590ED8000DED0C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iLamp/iLamp-Prefix.pch";
+				INFOPLIST_FILE = "iLamp/iLamp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		92AE9A8F1590ED8000DED0C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iLamp/iLamp-Prefix.pch";
+				INFOPLIST_FILE = "iLamp/iLamp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92AE9A691590ED7F00DED0C9 /* Build configuration list for PBXProject "iLamp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92AE9A8B1590ED8000DED0C9 /* Debug */,
+				92AE9A8C1590ED8000DED0C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92AE9A8D1590ED8000DED0C9 /* Build configuration list for PBXNativeTarget "iLamp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92AE9A8E1590ED8000DED0C9 /* Debug */,
+				92AE9A8F1590ED8000DED0C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 92AE9A661590ED7F00DED0C9 /* Project object */;
+}
