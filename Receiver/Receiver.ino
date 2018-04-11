@@ -1,47 +1,35 @@
-#include <VirtualWire.h>
-#include <string.h>
- 
-  byte message[VW_MAX_MESSAGE_LEN];
-  byte messageLength = VW_MAX_MESSAGE_LEN; 
- 
-  void setup() {
-    Serial.begin(9600);
-    vw_set_ptt_inverted(true);
-    vw_setup(2000);
-    vw_set_rx_pin(2);
-    vw_rx_start();
-  }
- 
-  void loop() {
-    if (vw_get_message(message, &messageLength)) {
-       int command = processResponse((char*)message, 1); //Byte Array Response and Pin Code.
-       if (command) {
-         Serial.print("Received Command: ");
-         Serial.print(command);      
-         Serial.print("\n");
-       }  
-    }
-  }
- 
-  int processResponse(char* message, int pinCode) {
-      char *p = message;
-      char *buf;
-      int o = 0;
-      int pin;
-      int command;
- 
-      while ((buf = strtok_r(p, ".", &p)) != NULL)  {
-         if (o == 0) {
-           pin = atoi(buf);
-         } else {
-           command = atoi(buf);
-         }
-         o++;
-      }
- 
-      if (pinCode == pin && command > 0) {
-          return command;
-      } else {
-         return 0; 
-      }
-  }
+/* 
+  RF Blink - Receiver sketch 
+     Written by ScottC 17 Jun 2014
+     Arduino IDE version 1.0.5
+     Website: http://arduinobasics.blogspot.com
+     Receiver: XY-MK-5V
+     Description: A simple sketch used to test RF transmission/receiver.          
+ ------------------------------------------------------------- */
+
+ #define rfReceivePin A0  //RF Receiver pin = Analog pin 0
+ #define ledPin 13        //Onboard LED = digital pin 13
+
+ unsigned int data = 0;   // variable used to store received data
+ const unsigned int upperThreshold = 70;  //upper threshold value
+ const unsigned int lowerThreshold = 50;  //lower threshold value
+
+ void setup(){
+   pinMode(ledPin, OUTPUT);
+   Serial.begin(9600);
+ }
+
+ void loop(){
+   data=analogRead(rfReceivePin);    //listen for data on Analog pin 0
+   
+    if(data>upperThreshold){
+     digitalWrite(ledPin, LOW);   //If a LOW signal is received, turn LED OFF
+     Serial.println(data);
+   }
+   
+   if(data<lowerThreshold){
+     digitalWrite(ledPin, HIGH);   //If a HIGH signal is received, turn LED ON
+     Serial.println(data);
+   }
+ }
+

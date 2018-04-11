@@ -32,7 +32,7 @@ uint8_t NRFLite::init(uint8_t radioId, uint8_t cePin, uint8_t csnPin, Bitrates b
     digitalWrite(_csnPin, HIGH);
     
     // Setup the microcontroller for SPI communication with the radio.
-    #if defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
+    #if defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
         pinMode(USI_DI, INPUT ); digitalWrite(USI_DI, HIGH);
         pinMode(USI_DO, OUTPUT); digitalWrite(USI_DO, LOW);
         pinMode(USI_SCK, OUTPUT); digitalWrite(USI_SCK, LOW);
@@ -47,8 +47,6 @@ uint8_t NRFLite::init(uint8_t radioId, uint8_t cePin, uint8_t csnPin, Bitrates b
     
     return prepForRx(radioId, bitrate, channel);
 }
-
-#if defined(__AVR__)
 
 uint8_t NRFLite::initTwoPin(uint8_t radioId, uint8_t momiPin, uint8_t sckPin, Bitrates bitrate, uint8_t channel)
 {
@@ -71,8 +69,6 @@ uint8_t NRFLite::initTwoPin(uint8_t radioId, uint8_t momiPin, uint8_t sckPin, Bi
 
     return prepForRx(radioId, bitrate, channel);
 }
-
-#endif
 
 void NRFLite::addAckData(void *data, uint8_t length, uint8_t removeExistingAcks)
 {
@@ -321,10 +317,10 @@ uint8_t NRFLite::getRxPacketLength()
     uint8_t dataLength;
     spiTransfer(READ_OPERATION, R_RX_PL_WID, &dataLength, 1);
 
-    // Verify the data length is valid (0 - 32 bytes).
+    // As specified in the datasheet, we verify the data length is valid (0 - 32 bytes).
     if (dataLength > 32)
     {
-        spiTransfer(WRITE_OPERATION, FLUSH_RX, NULL, 0); // Clear invalid data in the RX FIFO buffer.
+        spiTransfer(WRITE_OPERATION, FLUSH_RX, NULL, 0); // Clear the invalid data in the RX FIFO buffer.
         writeRegister(STATUS, readRegister(STATUS) | _BV(TX_DS) | _BV(MAX_RT) | _BV(RX_DR));
         return 0;
     }
@@ -522,7 +518,7 @@ void NRFLite::spiTransfer(SpiTransferType transferType, uint8_t regName, void *d
     {
         digitalWrite(_csnPin, LOW); // Signal radio it should begin listening to the SPI bus.
 
-        #if defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
+        #if defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
             // ATtiny transfer with USI.
             usiTransfer(regName);
             for (uint8_t i = 0; i < length; ++i) {
@@ -530,7 +526,7 @@ void NRFLite::spiTransfer(SpiTransferType transferType, uint8_t regName, void *d
                 if (transferType == READ_OPERATION) { intData[i] = newData; }
             }
         #else
-            // Transfer with the Arduino SPI library.
+            // ATmega transfer with the Arduino SPI library.
             SPI.transfer(regName);
             for (uint8_t i = 0; i < length; ++i) {
                 uint8_t newData = SPI.transfer(intData[i]);
@@ -544,7 +540,7 @@ void NRFLite::spiTransfer(SpiTransferType transferType, uint8_t regName, void *d
 
 uint8_t NRFLite::usiTransfer(uint8_t data)
 {
-    #if defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
+    #if defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
     
         USIDR = data;
         USISR = _BV(USIOIF);
@@ -566,21 +562,20 @@ uint8_t NRFLite::twoPinTransfer(uint8_t data)
     
     do
     {
-        byteFromRadio <<= 1; // Shift the byte we are building to the left.
+        byteFromRadio <<= 1;                              // Shift the byte we are building to the left.
         
         if (*_momi_PIN & _momi_MASK) { byteFromRadio++; } // Read bit from radio on MOMI pin.  If HIGH, set bit position 0 of our byte to 1.
         *_momi_DDR |= _momi_MASK;                         // Change MOMI to be an OUTPUT pin.
         
         if (data & 0x80) { *_momi_PORT |=  _momi_MASK; }  // Set MOMI HIGH if bit position 7 of the byte we are sending is 1.
 
-        *_sck_PORT |= _sck_MASK;  // Set SCK HIGH to transfer the bit to the radio.  CSN will remain LOW while the capacitor begins charging.
-        *_sck_PORT &= ~_sck_MASK; // Set SCK LOW.  CSN will have remained LOW due to the capacitor.
+        *_sck_PORT |= _sck_MASK;   // Set SCK HIGH to transfer the bit to the radio.  CSN will remain LOW while the capacitor begins charging.
+        *_sck_PORT &= ~_sck_MASK;  // Set SCK LOW.  CSN will have remained LOW due to the capacitor.
         
         *_momi_PORT &= ~_momi_MASK; // Set MOMI LOW.
-        *_momi_DDR &= ~_momi_MASK;  // Change MOMI back to an INPUT.  Since we previously ensured it was LOW, its PULLUP resistor will never 
-                                    // be enabled which would prevent MOMI from fully reaching a LOW state.
+        *_momi_DDR &= ~_momi_MASK;  // Change MOMI back to being an INPUT pin.  Since we previously ensured it was LOW, its PULLUP resistor will not be enabled.
 
-        data <<= 1; // Shift the byte we are sending to the left.
+        data <<= 1;                // Shift the byte we are sending to the left.
     }
     while (--bits);
     
@@ -592,11 +587,10 @@ void NRFLite::printRegister(char name[], uint8_t reg)
     String msg = name;
     msg += " ";
 
-    uint8_t i = 8;
-    do
+    for (int i = 7; i >= 0; i--)
     {
-        msg += bitRead(reg, --i);
+        msg += bitRead(reg, i);
     }
-    while (i);
+
     debugln(msg);
 }
